@@ -1,4 +1,4 @@
-package Calculadora;
+package main;
 
 import java.util.Scanner;
 
