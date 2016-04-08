@@ -1,21 +1,27 @@
-package main.java;
 
 import java.util.Scanner;
 
 public class Main {
 
+    static int resultado = 0;
+    static String cadena;
+    
     public static void main(String[] args) {
-
-        int resultado = 0;
 
         System.out.println("CALCULADORA POR LINEA DE COMANDOS \n");
         System.out.println("Por favor ingrese la operacion a realizar y presione ENTER para calcular \n");
 
         // LEO UN STRING INGRESADO POR TECLADO
-        Scanner entradaEscaner = new Scanner(System.in);
-        String cadena = entradaEscaner.nextLine();
+        cadena = setCalculo();
 
-        // SEPARO EL STRING INCIAL POR ESPACIOS
+        operar();
+
+        // IMPRIMO EL RESULTADO
+        imprimir();
+    }
+    
+    public static void operar(){
+        // SEPARO LA CADENA INCIAL EN TOKENS DELIMITADOS POR ESPACIOS
         String delimitadores = "[ .,;?!¡¿\\'\\\"\\\\[\\\\]]+";
         String[] palabrasSeparadas = cadena.split(delimitadores);
 
@@ -23,6 +29,23 @@ public class Main {
         resultado = Integer.parseInt(palabrasSeparadas[0]);
 
         // REALIZO LAS OPERACIONES DE SUMA Y RESTA
+        resultado = calcular(palabrasSeparadas, resultado);
+    }
+
+    public static String setCalculo() {
+        Scanner entradaEscaner = new Scanner(System.in);
+        String cadena = entradaEscaner.nextLine();
+
+        return cadena;
+    }
+
+    // PERMITO SETEAR EL CALCULO DIRECTAMENTE
+    public static void setCalculo(String cadena) {
+        Main.cadena = cadena;
+    }
+
+    public static int calcular(String[] palabrasSeparadas, int resultado) {
+
         for (int i = 1; i < palabrasSeparadas.length; i++) {
 
             if (palabrasSeparadas[i].compareTo("+") == 0) {
@@ -35,8 +58,14 @@ public class Main {
                 resultado = resultado / Integer.parseInt(palabrasSeparadas[i + 1]);
             }
         }
+        return resultado;
+    }
 
-        // IMPRIMO EL RESULTADO
-        System.out.println("\n" + cadena + " = " + resultado);
+    public static void imprimir() {
+        System.out.println("\n" + getResultado());
+    }
+
+    public static String getResultado() {
+        return (cadena + " = " + resultado);
     }
 }
