@@ -1,3 +1,4 @@
+
 import java.util.Scanner;
 
 public class Main {
@@ -43,7 +44,7 @@ public class Main {
     public static void setCalculo(String cadena) {
         Main.cadena = cadena;
     }
-    
+
     // REALIZA LAS DIFERENTES OPERACIONES MATEMATICAS CON LOS TOKENS
     public static int calcular(String[] palabrasSeparadas, int resultado) {
 
@@ -57,6 +58,8 @@ public class Main {
                 resultado = resultado * Integer.parseInt(palabrasSeparadas[i + 1]);
             } else if (palabrasSeparadas[i].compareTo("/") == 0) {
                 resultado = resultado / Integer.parseInt(palabrasSeparadas[i + 1]);
+            } else if (palabrasSeparadas[i].compareTo("%") == 0) {
+                resultado = Integer.parseInt(palabrasSeparadas[i + 1]) / 100 * resultado;
             }
         }
         return resultado;
