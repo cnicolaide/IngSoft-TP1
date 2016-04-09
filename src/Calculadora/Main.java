@@ -13,7 +13,7 @@ public class Main {
 
         // LEO UN STRING INGRESADO POR TECLADO
         Scanner entradaEscaner = new Scanner(System.in);
-        String cadena = entradaEscaner.nextLine(); 
+        String cadena = entradaEscaner.nextLine();
 
         // SEPARO EL STRING INCIAL POR ESPACIOS
         String delimitadores = "[ .,;?!¡¿\\'\\\"\\\\[\\\\]]+";
@@ -21,19 +21,21 @@ public class Main {
 
         // INICIALIZO RESULTADO CON EL PRIMER ELEMENTO INGRESADO
         resultado = Integer.parseInt(palabrasSeparadas[0]);
-                
+
         // REALIZO LAS OPERACIONES DE SUMA Y RESTA
         for (int i = 1; i < palabrasSeparadas.length; i++) {
-            
+
             if (palabrasSeparadas[i].compareTo("+") == 0) {
-                resultado = resultado + Integer.parseInt(palabrasSeparadas[i+1]);
-            }
-            
-            else if (palabrasSeparadas[i].compareTo("-") == 0) {
-                resultado = resultado - Integer.parseInt(palabrasSeparadas[i+1]);
+                resultado = resultado + Integer.parseInt(palabrasSeparadas[i + 1]);
+            } else if (palabrasSeparadas[i].compareTo("-") == 0) {
+                resultado = resultado - Integer.parseInt(palabrasSeparadas[i + 1]);
+            } else if (palabrasSeparadas[i].compareTo("*") == 0) {
+                resultado = resultado * Integer.parseInt(palabrasSeparadas[i + 1]);
+            } else if (palabrasSeparadas[i].compareTo("/") == 0) {
+                resultado = resultado / Integer.parseInt(palabrasSeparadas[i + 1]);
             }
         }
-        
+
         // IMPRIMO EL RESULTADO
         System.out.println("\n" + cadena + " = " + resultado);
     }
