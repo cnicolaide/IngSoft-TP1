@@ -1,11 +1,10 @@
-
 import java.util.Scanner;
 
 public class Main {
 
     static int resultado = 0;
     static String cadena;
-    
+
     public static void main(String[] args) {
 
         System.out.println("CALCULADORA POR LINEA DE COMANDOS \n");
@@ -19,19 +18,20 @@ public class Main {
         // IMPRIMO EL RESULTADO
         imprimir();
     }
-    
-    public static void operar(){
-        // SEPARO LA CADENA INCIAL EN TOKENS DELIMITADOS POR ESPACIOS
+
+    public static void operar() {
+        // SEPARA LA CADENA RECIBIDA EN TOKENS DELIMITADOS POR ESPACIOS
         String delimitadores = "[ .,;?!¡¿\\'\\\"\\\\[\\\\]]+";
         String[] palabrasSeparadas = cadena.split(delimitadores);
 
-        // INICIALIZO RESULTADO CON EL PRIMER ELEMENTO INGRESADO
+        // INICIALIZA RESULTADO CON EL PRIMER ELEMENTO INGRESADO
         resultado = Integer.parseInt(palabrasSeparadas[0]);
 
-        // REALIZO LAS OPERACIONES DE SUMA Y RESTA
+        // REALIZA LAS OPERACIONES
         resultado = calcular(palabrasSeparadas, resultado);
     }
 
+    // SETEA LA OPERACION A REALIZAR A TRAVES DE INGRESO POR TECLADO
     public static String setCalculo() {
         Scanner entradaEscaner = new Scanner(System.in);
         String cadena = entradaEscaner.nextLine();
@@ -39,11 +39,12 @@ public class Main {
         return cadena;
     }
 
-    // PERMITO SETEAR EL CALCULO DIRECTAMENTE
+    // SETEA LA OPERACION A REALIZAR A TRAVES DE PASAJE POR PARAMETRO
     public static void setCalculo(String cadena) {
         Main.cadena = cadena;
     }
-
+    
+    // REALIZA LAS DIFERENTES OPERACIONES MATEMATICAS CON LOS TOKENS
     public static int calcular(String[] palabrasSeparadas, int resultado) {
 
         for (int i = 1; i < palabrasSeparadas.length; i++) {
@@ -61,10 +62,12 @@ public class Main {
         return resultado;
     }
 
+    // IMPRIME EL RESULTADO
     public static void imprimir() {
         System.out.println("\n" + getResultado());
     }
 
+    // RETORNA EL RESULTADO EN UN STRING
     public static String getResultado() {
         return (cadena + " = " + resultado);
     }
