@@ -31,9 +31,11 @@ public class Main {
                 resultado = resultado - Integer.parseInt(palabrasSeparadas[i + 1]);
             } else if (palabrasSeparadas[i].compareTo("*") == 0) {
                 resultado = resultado * Integer.parseInt(palabrasSeparadas[i + 1]);
-        }
+            } else if (palabrasSeparadas[i].compareTo("%") == 0) {
+                resultado = Integer.parseInt(palabrasSeparadas[i + 1]) / 100 * resultado;
+            }
 
-        // IMPRIMO EL RESULTADO
-        System.out.println("\n" + cadena + " = " + resultado);
+            // IMPRIMO EL RESULTADO
+            System.out.println("\n" + cadena + " = " + resultado);
+        }
     }
-}
