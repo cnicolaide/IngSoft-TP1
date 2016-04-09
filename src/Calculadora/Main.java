@@ -31,9 +31,6 @@ public class Main {
                 resultado = resultado - Integer.parseInt(palabrasSeparadas[i + 1]);
             } else if (palabrasSeparadas[i].compareTo("*") == 0) {
                 resultado = resultado * Integer.parseInt(palabrasSeparadas[i + 1]);
-            } else if (palabrasSeparadas[i].compareTo("/") == 0) {
-                resultado = resultado / Integer.parseInt(palabrasSeparadas[i + 1]);
-            }
         }
 
         // IMPRIMO EL RESULTADO
